@@ -46,7 +46,9 @@ src/
 
 out/
     good_walk.ppm
+	good.png
     bad_walk.ppm
+	bad.png
 ```
 
 ---
