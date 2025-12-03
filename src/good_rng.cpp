@@ -9,7 +9,7 @@ int main()
     const int W = 800;
     const int H = 800;
 
-    vector<unsigned char> img(W * H * 3, 255);
+    vector<unsigned char> img(W * H * 3, 0);
 
     random_device rd;
     mt19937 gen(rd());
@@ -49,9 +49,9 @@ int main()
         }
 
         int idx = (y * W + x) * 3;
-        img[idx + 0] = 0;
-        img[idx + 1] = 0;
-        img[idx + 2] = 0;
+        img[idx + 0] = 255;
+        img[idx + 1] = 255;
+        img[idx + 2] = 255;
 
         if (i % 100 == 0)
         {
