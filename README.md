@@ -6,8 +6,8 @@ It is inspired by how casino inspectors test roulette wheels and slot-machine RN
 
 Two C++ programs are included:
 
-* good_rng.cpp — uses std::mt19937 (high-quality randomness)
-* bad_rng.cpp — uses a simple LCG with poor seed behaviour (biased, predictable)
+* good_rng.cpp - uses std::mt19937 (high-quality randomness)
+* bad_rng.cpp - uses a simple LCG with poor seed behaviour (biased, predictable)
 
 Both programs simulate thousands of walkers and record only their final landing positions, producing a PPM image.
 
@@ -31,7 +31,7 @@ Each step represents a bounce.
 The final position represents the pocket the ball would land in.
 
 A fair RNG produces a smooth, circular cloud of endpoints.
-A biased RNG produces clusters, streaks, “islands,” and repeating structures.
+A biased RNG produces clusters, streaks, “islands,” and repeating structures. It resembles a fractal when keenly observed.
 
 These shapes visually reveal the hidden bias — the same way real inspectors detect broken roulette wheels and flawed slot-machine algorithms.
 
@@ -45,33 +45,35 @@ src/
     bad_rng.cpp
 
 out/
-    walk_good.ppm
-    walk_bad.ppm
+    good_walk.ppm
+    bad_walk.ppm
 ```
 
 ---
 
 ## Build and Run
 
-### Compile good RNG
-
-g++ -O2 good_rng.cpp -o good
+### Compile good RNG  
+```
+g++ -O2 good_rng.cpp -o good  
 ./good
-
-### Compile bad RNG
-
-g++ -O2 bad_rng.cpp -o bad
+```  
+### Compile bad RNG  
+```
+g++ -O2 bad_rng.cpp -o bad  
 ./bad
-
+```
 ---
 
 ## Viewing the Images
 
-Convert PPM to PNG (recommended):
-
-convert walk_good.ppm good.png
-convert walk_bad.ppm bad.png
-
+View the PPM in any viewer or convert using ImageMagick:
+```
+magick good_walk.ppm good.png
+```
+```
+magick bad_walk.ppm bad.png
+```
 ---
 
 ## What You Should Notice
@@ -95,9 +97,9 @@ The shape of the cloud tells you everything about the underlying randomness.
 ## Notes
 
 * The walkers always start at the center to make the comparison fair.
-* The simulation only marks **endpoints**, not the full path, to mimic roulette-style “final pocket” outcomes.
-* The bad RNG uses a classic LCG with weak low bits — this reproduces the exact kind of flaws seen in outdated or poorly designed random systems.
-* Even tiny imperfections (in RNGs or physical machines) become obvious when repeated thousands of times — patterns always expose bias.
+* The simulation only marks **endpoints**, not the full path, to mimic roulette-style“final pocket”outcomes.
+* The bad RNG uses a classic LCG with weak low bits, this reproduces the exact kind of flaws seen in outdated or poorly designed random systems.
+* Even tiny imperfections (in RNGs or physical machines) become obvious when repeated thousands of times, patterns always expose bias.
 * This project is a simplified demonstration of how Monte Carlo testing is used in real-world auditing, simulation, and casino quality control.
 
 ---
